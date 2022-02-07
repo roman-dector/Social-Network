@@ -1,0 +1,11 @@
+.sideBarLink {
+  padding: 5px;
+}
+.link {
+  text-decoration: none;
+  color: whitesmoke;
+}
+.active{
+  text-decoration: none;
+  color: #32C0E1;
+}

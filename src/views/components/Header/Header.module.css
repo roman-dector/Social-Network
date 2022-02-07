@@ -1,0 +1,20 @@
+.header {
+  grid-area: h;
+  background-color: rgb(35, 35, 41);
+  display: flex;
+  justify-content: center;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+}
+
+.logo {
+  height: 100%;
+}
+
+.login {
+}
