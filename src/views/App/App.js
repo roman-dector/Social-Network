@@ -5,7 +5,8 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { compose } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
 
-import { authMe } from '../../redux/ducks/auth/operations';
+import { initializeApp } from '../../redux/ducks/app/operations';
+import { appSelectors } from '../../redux/ducks/app';
 import withStore from '../hocs/withStore';
 import {
   Header,
@@ -17,10 +18,13 @@ import {
   Music,
   Settings,
   NotFound,
+  Preloader,
 } from '../components/index.js';
 
 const App = props => {
-  useEffect(props.authMe);
+  useEffect(() => props.initializeApp());
+
+  if (!props.isAppInitialized) return <Preloader />;
 
   return (
     <BrowserRouter>
@@ -52,4 +56,11 @@ const App = props => {
   );
 };
 
-export default compose(withStore, connect(null, { authMe }))(App);
+const mapStateToProps = state => ({
+  isAppInitialized: appSelectors.getIsAppInitialized(state),
+});
+
+export default compose(
+  withStore,
+  connect(mapStateToProps, { initializeApp })
+)(App);
