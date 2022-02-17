@@ -13,8 +13,13 @@
 }
 
 .logo {
-  height: 100%;
+  height: 80%;
 }
 
-.login {
+.login a{
+  background-color: rgb(43, 158, 184);
+  padding: 5px;
+  border-radius: 5px;
+  color: whitesmoke;
+  text-decoration: none;
 }

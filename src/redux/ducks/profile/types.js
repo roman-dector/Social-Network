@@ -1,0 +1,10 @@
+const SET_USER_PROFILE_INFO = 'social-network/profile/SET_USER_PROFILE_INFO';
+const SET_USER_STATUS = 'social-network/profile/SET_USER_STATUS';
+const TOGGLE_IS_FETCHING_PROFILE_INFO =
+  'social-network/profile/TOGGLE_IS_FETCHING_PROFILE_INFO';
+
+export {
+  SET_USER_PROFILE_INFO,
+  SET_USER_STATUS,
+  TOGGLE_IS_FETCHING_PROFILE_INFO,
+};

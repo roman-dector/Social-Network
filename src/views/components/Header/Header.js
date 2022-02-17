@@ -10,7 +10,7 @@ const Header = () => {
         <img className={styles.logo} src={logo} alt={'logo'} />
 
         <div className={styles.login}>
-          <Link to='/login'>login</Link>
+          <Link to='/login'>Log in</Link>
         </div>
       </div>
     </div>

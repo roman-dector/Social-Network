@@ -1,0 +1,14 @@
+.profileInfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.profilePhoto img{
+  margin: 15px;
+  border-radius: 10px;
+  width: 80%;
+}
+
+.personalInfo {}
+
+.contacts {}

@@ -11,4 +11,5 @@
 
 .contentWrapper {
   grid-area: c;
+  width: 80%;
 }

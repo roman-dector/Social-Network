@@ -1,7 +1,13 @@
-const Profile = (props) => {
+import styles from './Profile.module.css';
+
+import ProfileInfo from './ProfileInfo/ProfileInfo';
+
+const Profile = props => {
   return (
-    <h1>Profile</h1>
-  )
-}
+    <div className={styles.profile}>
+      <ProfileInfo />
+    </div>
+  );
+};
 
 export default Profile;
