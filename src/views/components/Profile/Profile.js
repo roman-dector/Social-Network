@@ -1,3 +1,4 @@
+import withAuthNavigate from '../../hocs/withAuthNavigate';
 import styles from './Profile.module.css';
 
 import ProfileInfo from './ProfileInfo/ProfileInfo';
@@ -10,4 +11,4 @@ const Profile = props => {
   );
 };
 
-export default Profile;
+export default withAuthNavigate(Profile);

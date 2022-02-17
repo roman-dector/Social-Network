@@ -1,19 +1,27 @@
 import styles from './App.module.css';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { compose } from '@reduxjs/toolkit';
+import { connect } from 'react-redux';
 
-import Header from './components/Header/Header';
-import SideBar from './components/SideBar/SideBar';
-import Login from './components/Login/Login';
-import Profile from './components/Profile/Profile';
-import Dialogs from './components/Dialogs/Dialogs';
-import Users from './components/Users/Users';
-import Music from './components/Music/Music';
-import Settings from './components/Settings/Settings';
-import NotFound from './components/NotFound/NotFound';
+import { authMe } from '../../redux/ducks/auth/operations';
+import withStore from '../hocs/withStore';
+import {
+  Header,
+  SideBar,
+  Login,
+  Profile,
+  Dialogs,
+  Users,
+  Music,
+  Settings,
+  NotFound,
+} from '../components/index.js';
 
-const App = () => {
+const App = props => {
+  useEffect(props.authMe);
+
   return (
     <BrowserRouter>
       <div className={styles.app}>
@@ -44,4 +52,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default compose(withStore, connect(null, { authMe }))(App);

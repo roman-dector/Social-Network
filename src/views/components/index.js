@@ -1,0 +1,9 @@
+export { default as Header } from '../components/Header/Header';
+export { default as SideBar } from '../components/SideBar/SideBar';
+export { default as Login } from '../components/Login/Login';
+export { default as Profile } from '../components/Profile/Profile';
+export { default as Dialogs } from '../components/Dialogs/Dialogs';
+export { default as Users } from '../components/Users/Users';
+export { default as Music } from '../components/Music/Music';
+export { default as Settings } from '../components/Settings/Settings';
+export { default as NotFound } from '../components/NotFound/NotFound';
