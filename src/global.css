@@ -2,8 +2,13 @@ body, button, a {
   color: #d0d4fc;
 }
 
+body input:focus {
+  outline: none;
+}
+
 body button {
   font-weight: bold;
+  font-size: medium;
 }
 
 body {
