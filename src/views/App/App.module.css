@@ -12,4 +12,6 @@
 .contentWrapper {
   grid-area: c;
   width: 80%;
+  border-radius: 10px;
+  background-color: #111828;
 }

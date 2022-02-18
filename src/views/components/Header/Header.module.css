@@ -1,6 +1,6 @@
 .header {
   grid-area: h;
-  background-color: rgb(35, 35, 41);
+  background-color: #111828;
   display: flex;
   justify-content: center;
 }
@@ -17,9 +17,9 @@
 }
 
 .login a{
-  background-color: rgb(43, 158, 184);
+  background-color: #2898b1;
   padding: 5px;
   border-radius: 5px;
-  color: whitesmoke;
   text-decoration: none;
+  font-weight: bold;
 }
