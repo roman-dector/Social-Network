@@ -5,10 +5,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
+import { validate } from '../../validationSchemas/validationFields';
+
 const schema = yup
   .object({
-    email: yup.string().email().required(),
-    pass: yup.string().min(8).required(),
+    email: validate.emailRequired(),
+    pass: validate.passRequired(8),
   })
   .required();
 
