@@ -56,7 +56,14 @@ const LoginForm = props => {
           <label>remember me</label>
         </div>
 
-        <Captcha captchaUrl={props.captchaUrl} register={register} />
+        {!props.captchaUrl ? null : (
+          <div className={styles.captcha}>
+            <div className={styles.captchaImgContainer}>
+              <img src={props.captchaUrl} alt='captcha image' />
+            </div>
+            <input {...register('captcha')} />
+          </div>
+        )}
 
         <FormError error={errors.formError} />
 
@@ -83,17 +90,6 @@ const FormError = ({ error }) => {
       <p className={styles.formError}>{error.message}</p>
     </div>
   ) : null;
-};
-
-const Captcha = (captchaUrl, register) => {
-  return !captchaUrl ? null : (
-    <div className={styles.captcha}>
-      <div className={styles.captchaImgContainer}>
-        <img src={captchaUrl} alt='captcha image' />
-      </div>
-      <input {...register('captcha')} />
-    </div>
-  );
 };
 
 export default LoginForm;
