@@ -1,7 +1,7 @@
 import styles from './App.module.css';
 
 import React, { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { compose } from '@reduxjs/toolkit';
 import { connect } from 'react-redux';
 
@@ -27,7 +27,7 @@ const App = props => {
   if (!props.isAppInitialized) return <Preloader />;
 
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <div className={styles.app}>
         <Header />
         <SideBar />
@@ -52,7 +52,7 @@ const App = props => {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
