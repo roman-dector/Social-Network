@@ -9,7 +9,7 @@ import { validate } from '../../validationSchemas/validationFields';
 
 const validationSchema = yup.object({
   email: validate.emailRequired(),
-  password: validate.passRequired(8),
+  password: validate.passRequired(4),
 });
 
 const LoginForm = props => {
