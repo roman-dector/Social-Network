@@ -7,41 +7,48 @@ import * as yup from 'yup';
 
 import { validate } from '../../validationSchemas/validationFields';
 
-const schema = yup
-  .object({
-    email: validate.emailRequired(),
-    pass: validate.passRequired(8),
-  })
-  .required();
+const validationSchema = yup.object({
+  email: validate.emailRequired(),
+  password: validate.passRequired(8),
+});
 
-const LoginForm = () => {
+const LoginForm = props => {
   const {
     register,
     handleSubmit,
+    setError,
     formState: { errors, touchedFields },
   } = useForm({
     defaultVaues: {},
     mode: 'onChange',
-    resolver: yupResolver(schema),
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmit = data => {
-    console.log(data);
+    props.setIsAuthenticating(true);
+    props
+      .login(data)
+      .catch(e => {
+        setError('formError', { type: 'server', message: e.message });
+      })
+      .then(() => props.setIsAuthenticating(false));
   };
-
   return (
     <div className={styles.loginFormContainer}>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.email}>
           <label>Email:</label>
           <input {...register('email')} />
-          <FieldError errors={errors.email} touched={touchedFields.email} />
+          <FieldError error={errors.email} touched={touchedFields.email} />
         </div>
 
-        <div className={styles.pass}>
+        <div className={styles.password}>
           <label>Password:</label>
-          <input {...register('pass')} />
-          <FieldError errors={errors.pass} touched={touchedFields.pass} />
+          <input {...register('password')} type={'password'} />
+          <FieldError
+            error={errors.password}
+            touched={touchedFields.password}
+          />
         </div>
 
         <div className={styles.rememberMe}>
@@ -49,19 +56,44 @@ const LoginForm = () => {
           <label>remember me</label>
         </div>
 
+        <Captcha captchaUrl={props.captchaUrl} register={register} />
+
+        <FormError error={errors.formError} />
+
         <div className={styles.submit}>
-          <button type='submit'>Log In</button>
+          <button type='submit' disabled={props.isAuthenticating}>
+            Log In
+          </button>
         </div>
       </form>
     </div>
   );
 };
 
-const FieldError = ({ errors, touched }) => {
-  if (errors && touched) {
-    let errorMessage = errors.message.split(' ').splice(1).join(' ');
+const FieldError = ({ error, touched }) => {
+  if (error && touched) {
+    let errorMessage = error.message.split(' ').splice(1).join(' ');
     return <p className={styles.fieldError}>{errorMessage}</p>;
   } else return null;
+};
+
+const FormError = ({ error }) => {
+  return error ? (
+    <div className={styles.formErrorContainer}>
+      <p className={styles.formError}>{error.message}</p>
+    </div>
+  ) : null;
+};
+
+const Captcha = (captchaUrl, register) => {
+  return !captchaUrl ? null : (
+    <div className={styles.captcha}>
+      <div className={styles.captchaImgContainer}>
+        <img src={captchaUrl} alt='captcha image' />
+      </div>
+      <input {...register('captcha')} />
+    </div>
+  );
 };
 
 export default LoginForm;

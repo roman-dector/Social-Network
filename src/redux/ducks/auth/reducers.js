@@ -1,6 +1,12 @@
+import { combineReducers } from '@reduxjs/toolkit';
 import * as types from './types';
 const initialState = {
   isUserAuthed: false,
+  isAuthenticating: false,
+};
+
+const captchaState = {
+  captchaUrl: null,
 };
 
 const authReducer = (state = initialState, action) => {
@@ -10,9 +16,31 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isUserAuthed: action.isUserAuthed,
       };
+    case types.SET_IS_AUTHENTICATING:
+      return {
+        ...state,
+        isAuthenticating: action.isAuthenticating,
+      };
     default:
       return state;
   }
 };
 
-export default authReducer;
+const captchaReducer = (state = captchaState, action) => {
+  switch (action.type) {
+    case types.SET_CAPTCHA_URL:
+      return {
+        ...state,
+        captchaUrl: action.captchaUrl,
+      };
+    case types.SET_CAPTCHA_TEXT:
+      return {
+        ...state,
+        captchaText: action.captchaText,
+      };
+    default:
+      return state;
+  }
+};
+
+export default combineReducers({auth: authReducer, captcha: captchaReducer });
