@@ -5,4 +5,19 @@ const setIsUserAuthed = isUserAuthed => ({
   isUserAuthed,
 });
 
-export { setIsUserAuthed };
+const setIsAuthenticating = isAuthenticating => ({
+  type: types.SET_IS_AUTHENTICATING,
+  isAuthenticating,
+});
+
+const setCaptchaUrl = captchaUrl => ({
+  type: types.SET_CAPTCHA_URL,
+  captchaUrl,
+});
+
+const setCaptchaText = captchaText => ({
+  type: types.SET_CAPTCHA_TEXT,
+  captchaText,
+});
+
+export { setIsUserAuthed, setIsAuthenticating, setCaptchaUrl, setCaptchaText };
