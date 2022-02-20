@@ -1,4 +1,5 @@
-This project was deployed to github pages: https://roman-dector.github.io/Social-Network/\
+This project was deployed to github pages: https://roman-dector.github.io/Social-Network/
+
 You can test it using this credentials:\
 email: free@samuraijs.com\
 password: free
