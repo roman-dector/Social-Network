@@ -2,6 +2,7 @@
   "name": "social-network",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://roman-dector.github.io/Social-Network/",
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
     "@reduxjs/toolkit": "^1.7.2",

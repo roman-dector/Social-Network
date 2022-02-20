@@ -27,7 +27,7 @@ const App = props => {
   if (!props.isAppInitialized) return <Preloader />;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <div className={styles.app}>
         <Header />
         <SideBar />
