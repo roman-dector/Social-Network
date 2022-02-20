@@ -1,6 +1,7 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was deployed to github pages: https://roman-dector.github.io/Social-Network/\
+You can test it using this credentials:\
+email: free@samuraijs.com\
+password: free
 
 ## Available Scripts
 
