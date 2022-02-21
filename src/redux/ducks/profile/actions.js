@@ -15,4 +15,14 @@ const toggleIsFetchingProfileInfo = isFetchingProfileInfo => ({
   isFetchingProfileInfo,
 });
 
-export { setUserProfileInfo, setUserStatus, toggleIsFetchingProfileInfo };
+const toggleIsFetchingProfileStatus = isFetchingProfileStatus => ({
+  type: types.TOGGLE_IS_FETCHING_PROFILE_STATUS,
+  isFetchingProfileStatus,
+});
+
+export {
+  setUserProfileInfo,
+  setUserStatus,
+  toggleIsFetchingProfileInfo,
+  toggleIsFetchingProfileStatus,
+};

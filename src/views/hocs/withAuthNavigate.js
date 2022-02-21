@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-import { getIsUserAuthed } from '../../redux/ducks/auth/selectors';
+import { selectIsUserAuthed } from '../../redux/ducks/auth/selectors';
 
 const mapStateToProps = state => ({
-  isUserAuthed: getIsUserAuthed(state),
+  isUserAuthed: selectIsUserAuthed(state),
 });
 
 const withAuthNavigate = Component => {

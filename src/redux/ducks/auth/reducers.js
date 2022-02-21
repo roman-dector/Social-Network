@@ -1,15 +1,21 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import * as types from './types';
-const initialState = {
+const authState = {
   isUserAuthed: false,
   isAuthenticating: false,
+};
+
+const loggedUserState = {
+  id: null,
+  email: '',
+  login: '',
 };
 
 const captchaState = {
   captchaUrl: null,
 };
 
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = authState, action) => {
   switch (action.type) {
     case types.SET_IS_USER_AUTHED:
       return {
@@ -20,6 +26,18 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         isAuthenticating: action.isAuthenticating,
+      };
+    default:
+      return state;
+  }
+};
+
+const loggedUserReducer = (state = loggedUserState, action) => {
+  switch (action.type) {
+    case types.SET_LOGGED_USER_INFO:
+      return {
+        ...state,
+        ...action.loggedUserInfo,
       };
     default:
       return state;
@@ -43,4 +61,8 @@ const captchaReducer = (state = captchaState, action) => {
   }
 };
 
-export default combineReducers({auth: authReducer, captcha: captchaReducer });
+export default combineReducers({
+  auth: authReducer,
+  captcha: captchaReducer,
+  loggedUser: loggedUserReducer,
+});

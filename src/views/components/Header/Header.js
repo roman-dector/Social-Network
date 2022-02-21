@@ -3,7 +3,7 @@ import styles from './Header.module.css';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { getIsUserAuthed } from '../../../redux/ducks/auth/selectors';
+import { selectIsUserAuthed } from '../../../redux/ducks/auth/selectors';
 import { logout } from '../../../redux/ducks/auth/operations';
 
 import logo from './logo192.png';
@@ -28,7 +28,7 @@ const Header = props => {
 };
 
 const mapStateToProps = state => ({
-  isUserAuthed: getIsUserAuthed(state),
+  isUserAuthed: selectIsUserAuthed(state),
 })
 
 export default connect(mapStateToProps, { logout })(Header);

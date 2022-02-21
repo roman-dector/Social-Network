@@ -38,7 +38,9 @@ const App = props => {
 
             <Route path='/login' element={<Login />} />
 
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/profile' element={<Profile />}>
+              <Route path=':userId' element={<Profile />} />
+            </Route>
 
             <Route path='/dialogs' element={<Dialogs />} />
 

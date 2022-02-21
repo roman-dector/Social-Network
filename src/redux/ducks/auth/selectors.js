@@ -1,5 +1,8 @@
-const getIsUserAuthed = state => state.authState.auth.isUserAuthed;
-const getIsAuthenticating = state => state.authState.auth.isAuthenticating;
-const getCaptchaUrl = state => state.authState.captcha.captchaUrl;
+const selectIsUserAuthed = state => state.authState.auth.isUserAuthed;
+const selectIsAuthenticating = state => state.authState.auth.isAuthenticating;
 
-export { getIsUserAuthed, getIsAuthenticating, getCaptchaUrl };
+const selectCaptchaUrl = state => state.authState.captcha.captchaUrl;
+
+const selectLoggedUserId = state => state.authState.loggedUser.id;
+
+export { selectIsUserAuthed, selectIsAuthenticating, selectCaptchaUrl, selectLoggedUserId };

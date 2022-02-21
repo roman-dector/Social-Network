@@ -1,13 +1,21 @@
 import { authAPI, securityAPI } from '../../../dataAccess/api';
-import { WrongCredentialsError, WrongCaptchaError } from '../../../dataAccess/apiErrors';
+import {
+  WrongCredentialsError,
+  WrongCaptchaError,
+} from '../../../dataAccess/apiErrors';
 
 import * as actions from './actions';
 
 const authMe = () => async dispatch => {
   let response = await authAPI.authMe();
 
-  if (!response.data.resultCode) dispatch(actions.setIsUserAuthed(true));
-  else dispatch(actions.setIsUserAuthed(false));
+  if (!response.data.resultCode) {
+    dispatch(actions.setIsUserAuthed(true));
+    dispatch(actions.setLoggedUserInfo(response.data.data));
+  } else {
+    dispatch(actions.setIsUserAuthed(false));
+    dispatch(actions.setLoggedUserInfo({ id: null, email: '', login: '' }));
+  }
 };
 
 const login =
@@ -25,8 +33,8 @@ const login =
       let captchaResponse = await securityAPI.getCaptchaUrl();
       let captchaUrl = captchaResponse.data.url;
       debugger;
-      dispatch(actions.setCaptchaUrl(captchaUrl))
-      throw new WrongCaptchaError(response.data.messages)
+      dispatch(actions.setCaptchaUrl(captchaUrl));
+      throw new WrongCaptchaError(response.data.messages);
     } else throw new WrongCredentialsError(response.data.messages[0]);
   };
 

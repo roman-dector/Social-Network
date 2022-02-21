@@ -21,14 +21,38 @@ const authAPI = {
   },
 
   async logout() {
-    return await instance.delete('/auth/login')
-  }
+    return await instance.delete('/auth/login');
+  },
 };
 
 const securityAPI = {
   async getCaptchaUrl() {
-    return await instance.get('/security/get-captcha-url')
-  }
-}
+    return await instance.get('/security/get-captcha-url');
+  },
+};
 
-export { authAPI, securityAPI };
+const profileAPI = {
+  async getUserProfileInfo(userId) {
+    return await instance.get(`/profile/${userId}`);
+  },
+
+  async getUserStatus(userId) {
+    return await instance.get(`/profile/status/${userId}`);
+  },
+
+  async updateLoggedUserInfo(userInfo) {
+    return await instance.put('/profile', userInfo);
+  },
+
+  async updateLoggedUserStatus(status) {
+    return await instance.put('/profile/status', { status });
+  },
+
+  async updateLoggedUserPhoto(image) {
+    let formData = new FormData();
+    formData.append('image', image)
+    return await instance.put('/profile/photo', formData);
+  },
+};
+
+export { authAPI, securityAPI, profileAPI };

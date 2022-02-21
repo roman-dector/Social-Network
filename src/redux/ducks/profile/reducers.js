@@ -1,25 +1,43 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import * as types from './types';
 
-const initialState = {
-  profileInfo: {},
-  profilePosts: {},
+const profileInfoState = {
+  isFetchingProfileInfo: false,
+  isFetchingProfileStatus: false,
+  userProfileInfo: {},
+  userProfileStatus: '',
 };
 
-const profileInfoReducer = (state = initialState.profileInfo, action) => {
+const profilePostsState = {};
+
+const profileInfoReducer = (state = profileInfoState, action) => {
   switch (action.type) {
     case types.SET_USER_PROFILE_INFO:
-      return {};
+      return {
+        ...state,
+        userProfileInfo: action.userProfileInfo,
+      };
     case types.SET_USER_STATUS:
-      return {};
+      return {
+        ...state,
+        userProfileStatus: action.userStatus,
+      };
     case types.TOGGLE_IS_FETCHING_PROFILE_INFO:
-      return {};
+      return {
+        ...state,
+        isFetchingProfileInfo: action.isFetchingProfileInfo,
+      };
+    case types.TOGGLE_IS_FETCHING_PROFILE_STATUS:
+      return {
+        ...state,
+        isFetchingProfileStatus: action.isFetchingProfileStatus,
+      };
     default:
       return state;
   }
 };
 
-const profilePostsReducer = (state = initialState.profilePosts, action) => {
+const profilePostsReducer = (state = profilePostsState, action) => {
   switch (action.type) {
     default:
       return state;

@@ -3,9 +3,9 @@ import { Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import {
-  getIsUserAuthed,
-  getIsAuthenticating,
-  getCaptchaUrl,
+  selectIsUserAuthed,
+  selectIsAuthenticating,
+  selectCaptchaUrl,
 } from '../../../redux/ducks/auth/selectors';
 import { login } from '../../../redux/ducks/auth/operations';
 import { setIsAuthenticating } from '../../../redux/ducks/auth/actions';
@@ -27,9 +27,9 @@ const Login = props => {
 };
 
 const mapStateToPops = state => ({
-  isUserAuthed: getIsUserAuthed(state),
-  isAuthenticating: getIsAuthenticating(state),
-  captchaUrl: getCaptchaUrl(state),
+  isUserAuthed: selectIsUserAuthed(state),
+  isAuthenticating: selectIsAuthenticating(state),
+  captchaUrl: selectCaptchaUrl(state),
 });
 
 export default connect(mapStateToPops, { login, setIsAuthenticating })(Login);
