@@ -79,11 +79,7 @@ const MyContacts = ({ contacts }) => (
 const ChangePhoto = props => (
   <div className={styles.changePhotoContainer}>
     <label>
-      <input
-        className={styles.changePhoto}
-        type={'file'}
-        onChange={props.onChangePhoto}
-      />
+      <input type={'file'} onChange={props.onChangePhoto} />
       <span>Choose file</span>
     </label>
   </div>
