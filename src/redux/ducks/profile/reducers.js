@@ -22,6 +22,11 @@ const profileInfoReducer = (state = profileInfoState, action) => {
         ...state,
         userProfileStatus: action.userStatus,
       };
+    case types.SET_USER_PHOTOS:
+      return {
+        ...state,
+        userProfileInfo: { ...state.userProfileInfo, photos: action.photos },
+      };
     case types.TOGGLE_IS_FETCHING_PROFILE_INFO:
       return {
         ...state,

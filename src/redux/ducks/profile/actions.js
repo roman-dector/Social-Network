@@ -10,6 +10,11 @@ const setUserStatus = userStatus => ({
   userStatus,
 });
 
+const setUserPhotos = photos => ({
+  type: types.SET_USER_PHOTOS,
+  photos,
+});
+
 const toggleIsFetchingProfileInfo = isFetchingProfileInfo => ({
   type: types.TOGGLE_IS_FETCHING_PROFILE_INFO,
   isFetchingProfileInfo,
@@ -23,6 +28,7 @@ const toggleIsFetchingProfileStatus = isFetchingProfileStatus => ({
 export {
   setUserProfileInfo,
   setUserStatus,
+  setUserPhotos,
   toggleIsFetchingProfileInfo,
   toggleIsFetchingProfileStatus,
 };

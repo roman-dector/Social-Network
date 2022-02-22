@@ -2,6 +2,7 @@ import styles from './ProfileInfo.module.css';
 
 import default_avatar from '../../../assets/default_avatar.jpg';
 import Preloader from '../../common/Preloader';
+import { useForm } from 'react-hook-form';
 
 const ProfileInfo = props => {
   let {
@@ -12,13 +13,12 @@ const ProfileInfo = props => {
     aboutMe,
     contacts,
   } = props.userProfileInfo;
-  debugger;
   return (
     <div className={styles.profileInfo}>
-      <div className={styles.profilePhoto}>
-        <img
-          src={photos?.large ? photos?.large : default_avatar}
-          alt='user avatar'
+      <div className={styles.profilePhotoContainer}>
+        <ProfilePhoto
+          photo={photos?.large ? photos?.large : default_avatar}
+          onChangePhoto={props.onChangePhoto}
         />
 
         {props.isFetchingProfileStatus ? (
@@ -75,5 +75,29 @@ const MyContacts = ({ contacts }) => (
       : null}
   </div>
 );
+
+const ChangePhoto = props => (
+  <div className={styles.changePhotoContainer}>
+    <label>
+      <input
+        className={styles.changePhoto}
+        type={'file'}
+        onChange={props.onChangePhoto}
+      />
+      <span>Choose file</span>
+    </label>
+  </div>
+);
+
+const ProfilePhoto = props => {
+  return (
+    <div className={styles.profilePhoto}>
+      <img src={props.photo} alt='user avatar' />
+      <ChangePhoto onChangePhoto={props.onChangePhoto} />
+    </div>
+  );
+};
+
+const ProfileStatus = () => {};
 
 export default ProfileInfo;

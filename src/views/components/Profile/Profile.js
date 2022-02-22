@@ -9,6 +9,7 @@ import withAuthNavigate from '../../hocs/withAuthNavigate';
 import {
   getUserProfileInfo,
   getUserStatus,
+  updateLoggedUserPhoto,
 } from '../../../redux/ducks/profile/operations';
 import {
   selectUserProfileInfo,
@@ -43,6 +44,11 @@ const Profile = props => {
     props.toggleIsFetchingProfileStatus(false);
   }, [urlParams]);
 
+  const onChangePhoto = e => {
+    if (e.target.files.length)
+      props.updateLoggedUserPhoto(e.target.files[0]);
+  };
+
   return (
     <div className={styles.profile}>
       {props.isFetchingProfileInfo ? (
@@ -52,6 +58,7 @@ const Profile = props => {
           userProfileInfo={props.userProfileInfo}
           userProfileStatus={props.userProfileStatus}
           isFetchingProfileStatus={props.isFetchingProfileStatus}
+          onChangePhoto={onChangePhoto}
         />
       )}
     </div>
@@ -71,6 +78,7 @@ export default compose(
   connect(mapStateToProps, {
     getUserProfileInfo,
     getUserStatus,
+    updateLoggedUserPhoto,
     toggleIsFetchingProfileInfo,
     toggleIsFetchingProfileStatus,
   })

@@ -13,4 +13,10 @@ const getUserStatus = userId => async dispatch => {
   return dispatch(actions.setUserStatus(response.data));
 };
 
-export { getUserProfileInfo, getUserStatus };
+const updateLoggedUserPhoto = image => async dispatch => {
+  let response = await profileAPI.updateLoggedUserPhoto(image);
+  if (!response.data.resultCode)
+    dispatch(actions.setUserPhotos(response.data.data.photos));
+};
+
+export { getUserProfileInfo, getUserStatus, updateLoggedUserPhoto };

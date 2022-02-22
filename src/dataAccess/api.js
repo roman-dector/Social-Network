@@ -50,7 +50,7 @@ const profileAPI = {
 
   async updateLoggedUserPhoto(image) {
     let formData = new FormData();
-    formData.append('image', image)
+    formData.append('image', image);
     return await instance.put('/profile/photo', formData);
   },
 };
