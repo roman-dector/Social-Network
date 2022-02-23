@@ -1,3 +1,0 @@
-const SET_IS_APP_INITIALIZED = 'social-network/app/SET_IS_APP_INITIALIZED';
-
-export { SET_IS_APP_INITIALIZED };
