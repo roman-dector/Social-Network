@@ -5,11 +5,11 @@ import {
 } from '../../../dataAccess/apiErrors'
 import { AppThunk } from '../../store'
 
+import * as types from './types'
 import * as actions from './actions'
 
 export const authMe = (): AppThunk => async dispatch => {
   let response = await authAPI.authMe()
-
   if (!response.data.resultCode) {
     dispatch(actions.setIsUserAuthed(true))
     dispatch(actions.setLoggedUserInfo(response.data.data))
@@ -19,20 +19,13 @@ export const authMe = (): AppThunk => async dispatch => {
   }
 }
 
-type LoginData = {
-  email: string
-  password: string
-  rememberMe: boolean
-  captcha: string | null
-}
-
 export const login =
   ({
     email,
     password,
     rememberMe = false,
     captcha = null,
-  }: LoginData): AppThunk =>
+  }: types.LoginData): AppThunk =>
   async dispatch => {
     let response = await authAPI.login({
       email,

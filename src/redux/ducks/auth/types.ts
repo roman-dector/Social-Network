@@ -30,3 +30,10 @@ export type SetLoggedUserInfoActionType = {
   type: typeof SET_LOGGED_USER_INFO
   loggedUserInfo: LoggedUserInfoType
 }
+
+export type LoginData = {
+  email: string
+  password: string
+  rememberMe: boolean
+  captcha: string | null
+}
