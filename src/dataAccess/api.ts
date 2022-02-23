@@ -1,6 +1,7 @@
 import axios from 'axios'
 import * as respTypes from './responsesTypes'
-import { authTypes, profileTypes } from '../redux/ducks'
+import { authTypes } from '../redux/ducks/auth'
+import { profileTypes } from '../redux/ducks/profile'
 
 const instance = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0',
@@ -73,7 +74,9 @@ export const profileAPI = {
 
   async updateLoggedUserPhoto(
     image: File
-  ): Promise<respTypes.ApiResponseType<respTypes.UpdataLoggedUserPhotoDataType>> {
+  ): Promise<
+    respTypes.ApiResponseType<respTypes.UpdataLoggedUserPhotoDataType>
+  > {
     let formData = new FormData()
     formData.append('image', image)
     return await instance.put('/profile/photo', formData)

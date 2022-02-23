@@ -1,4 +1,5 @@
-import { authTypes, profileTypes } from '../redux/ducks'
+import { authTypes } from '../redux/ducks/auth'
+import { profileTypes } from '../redux/ducks/profile'
 
 export type ApiResponseType<DataType> = {
   data: DataType

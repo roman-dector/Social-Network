@@ -23,5 +23,5 @@ export const updateLoggedUserPhoto =
   async dispatch => {
     let response = await profileAPI.updateLoggedUserPhoto(image)
     if (!response.data.resultCode)
-      dispatch(actions.setUserPhotos(response.data.data.photos))
+      dispatch(actions.setUserPhotos(response.data.data))
   }

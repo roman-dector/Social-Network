@@ -39,7 +39,7 @@ export const login =
       let captchaResponse = await securityAPI.getCaptchaUrl()
       let captchaUrl = captchaResponse.data.url
       dispatch(actions.setCaptchaUrl(captchaUrl))
-      throw new WrongCaptchaError(response.data.messages)
+      throw new WrongCaptchaError(response.data.messages[0])
     } else throw new WrongCredentialsError(response.data.messages[0])
   }
 
