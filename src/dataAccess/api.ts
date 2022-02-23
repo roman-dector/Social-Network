@@ -5,7 +5,7 @@ import { profileTypes } from '../redux/ducks/profile'
 
 const instance = axios.create({
   baseURL: 'https://social-network.samuraijs.com/api/1.0',
-  headers: { 'API-KEY': process.env.REACT_APP_API_KEY || '' },
+  headers: { 'API-KEY': process.env.REACT_APP_API_KEY || '5fd6286d-f0d9-4683-b3a9-4cdeb04d51f6' },
   withCredentials: true,
 })
 
